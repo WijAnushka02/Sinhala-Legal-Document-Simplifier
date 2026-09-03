@@ -1,0 +1,96 @@
+# ============================================================
+# WEB FRAMEWORK
+# ============================================================
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.9         # File upload support
+
+# ============================================================
+# DATABASE
+# ============================================================
+sqlalchemy[asyncio]==2.0.36
+asyncpg==0.30.0                 # Async PostgreSQL driver
+alembic==1.13.3                 # Database migrations
+psycopg2-binary==2.9.10         # Sync driver for Alembic CLI
+
+# ============================================================
+# VALIDATION & SETTINGS
+# ============================================================
+pydantic==2.9.2
+pydantic-settings==2.5.2
+email-validator==2.2.0
+
+# ============================================================
+# AUTHENTICATION
+# ============================================================
+python-jose[cryptography]==3.3.0  # JWT
+passlib[bcrypt]==1.7.4           # Password hashing
+
+# ============================================================
+# CACHE & RATE LIMITING
+# ============================================================
+redis[hiredis]==5.1.1
+aioredis==2.0.1
+
+# ============================================================
+# GEMINI API
+# ============================================================
+google-genai==0.8.3
+
+# ============================================================
+# RAG — Embeddings & Vector Store
+# ============================================================
+chromadb==0.5.18
+sentence-transformers==3.2.1
+faiss-cpu==1.9.0                # Optional: FAISS for local similarity search
+
+# ============================================================
+# ML — PyTorch & Transformers (SLM)
+# ============================================================
+torch==2.4.1
+transformers==4.45.2
+sentencepiece==0.2.0            # SentencePiece tokenizer
+datasets==3.0.1                 # HuggingFace datasets
+
+# ============================================================
+# DOCUMENT PROCESSING
+# ============================================================
+pymupdf==1.24.11                # PDF text extraction (fitz)
+pdfplumber==0.11.4              # Alternative PDF extraction
+python-docx==1.1.2              # Word document extraction
+Pillow==10.4.0                  # Image processing for OCR
+pytesseract==0.3.13             # OCR (requires Tesseract installed)
+
+# ============================================================
+# NLP UTILITIES
+# ============================================================
+scikit-learn==1.5.2
+numpy==1.26.4
+nltk==3.9.1
+
+# ============================================================
+# HTTP & ASYNC UTILITIES
+# ============================================================
+httpx==0.27.2                   # Async HTTP client
+aiofiles==24.1.0                # Async file I/O
+
+# ============================================================
+# OBSERVABILITY
+# ============================================================
+structlog==24.4.0               # Structured JSON logging
+
+# ============================================================
+# TESTING
+# ============================================================
+pytest==8.3.3
+pytest-asyncio==0.24.0
+pytest-cov==5.0.0
+httpx==0.27.2                   # For FastAPI TestClient
+anyio==4.6.2
+
+# ============================================================
+# CODE QUALITY (dev)
+# ============================================================
+ruff==0.6.9
+mypy==1.11.2
+pip-audit==2.7.3

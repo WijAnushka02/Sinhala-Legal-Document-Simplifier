@@ -1,0 +1,195 @@
+/* ============================================================
+   Design tokens & global styles
+   Sinhala Legal Document Simplifier
+   ============================================================ */
+
+:root {
+  /* Color palette — deep blue/teal with Sri Lankan warmth */
+  --color-bg:          #0d1117;
+  --color-bg-card:     #161b22;
+  --color-bg-input:    #1c2128;
+  --color-border:      #30363d;
+  --color-border-glow: rgba(56, 189, 248, 0.3);
+
+  --color-primary:     #38bdf8;
+  --color-primary-dark:#0284c7;
+  --color-secondary:   #a78bfa;
+  --color-success:     #34d399;
+  --color-warning:     #fbbf24;
+  --color-error:       #f87171;
+
+  --color-text:        #e6edf3;
+  --color-text-muted:  #7d8590;
+  --color-text-dim:    #484f58;
+
+  /* Typography */
+  --font-sans:  'Inter', 'Noto Sans Sinhala', system-ui, sans-serif;
+  --font-si:    'Noto Sans Sinhala', 'Inter', sans-serif;
+
+  /* Spacing */
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.4), 0 4px 16px rgba(0,0,0,0.3);
+  --shadow-glow: 0 0 24px rgba(56, 189, 248, 0.12);
+}
+
+/* Reset */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Sinhala text */
+.si { font-family: var(--font-si); }
+
+/* ── Layout ────────────────────────────────────────────── */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ── Cards ─────────────────────────────────────────────── */
+.card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.card:hover { border-color: var(--color-border-glow); box-shadow: var(--shadow-glow); }
+
+/* ── Buttons ────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem; font-weight: 600;
+  cursor: pointer; border: none; transition: all 0.2s;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: #fff;
+}
+.btn-primary:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(56,189,248,0.3); }
+.btn-secondary { background: var(--color-bg-input); border: 1px solid var(--color-border); color: var(--color-text); }
+.btn-secondary:hover { border-color: var(--color-primary); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* ── Inputs ─────────────────────────────────────────────── */
+.input, .textarea, .select {
+  width: 100%;
+  background: var(--color-bg-input);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  padding: 0.65rem 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.input:focus, .textarea:focus, .select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(56,189,248,0.15);
+}
+.textarea { resize: vertical; min-height: 140px; line-height: 1.7; font-family: var(--font-si); }
+
+/* ── Language selector ──────────────────────────────────── */
+.lang-selector { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.lang-btn {
+  padding: 0.4rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer; font-size: 0.9rem; transition: all 0.2s;
+}
+.lang-btn.active {
+  background: var(--color-primary); border-color: var(--color-primary);
+  color: #0d1117; font-weight: 600;
+}
+
+/* ── Result panel ───────────────────────────────────────── */
+.result-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 700px) { .result-grid { grid-template-columns: 1fr; } }
+
+.result-box {
+  background: var(--color-bg-input);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  font-family: var(--font-si);
+  font-size: 1rem;
+  line-height: 1.8;
+  min-height: 120px;
+}
+.result-box.simplified { border-color: rgba(52,211,153,0.3); }
+
+/* ── Badges ─────────────────────────────────────────────── */
+.badge {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.78rem; font-weight: 600;
+}
+.badge-obligation { background: rgba(251,191,36,0.15); color: var(--color-warning); border: 1px solid rgba(251,191,36,0.3); }
+.badge-right      { background: rgba(52,211,153,0.15); color: var(--color-success); border: 1px solid rgba(52,211,153,0.3); }
+.badge-condition  { background: rgba(167,139,250,0.15); color: var(--color-secondary); border: 1px solid rgba(167,139,250,0.3); }
+.badge-deadline   { background: rgba(248,113,113,0.15); color: var(--color-error); border: 1px solid rgba(248,113,113,0.3); }
+
+/* ── Meaning score ──────────────────────────────────────── */
+.meaning-bar { height: 6px; background: var(--color-border); border-radius: 999px; overflow: hidden; }
+.meaning-fill { height: 100%; background: linear-gradient(90deg, var(--color-primary), var(--color-success)); border-radius: 999px; transition: width 0.8s ease; }
+
+/* ── Loading ────────────────────────────────────────────── */
+.loading-screen {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  height: 100vh; gap: 1rem; color: var(--color-text-muted);
+}
+.spinner {
+  width: 40px; height: 40px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Navbar ─────────────────────────────────────────────── */
+.navbar {
+  background: rgba(13,17,23,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.9rem 0;
+  position: sticky; top: 0; z-index: 100;
+}
+.navbar-inner {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.navbar-brand {
+  font-size: 1.1rem; font-weight: 700; color: var(--color-text);
+  text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+}
+
+/* ── Utility ────────────────────────────────────────────── */
+.text-muted { color: var(--color-text-muted); }
+.text-success { color: var(--color-success); }
+.text-error { color: var(--color-error); }
+.mt-1 { margin-top: 0.5rem; } .mt-2 { margin-top: 1rem; } .mt-3 { margin-top: 1.5rem; }
+.mb-1 { margin-bottom: 0.5rem; } .mb-2 { margin-bottom: 1rem; }
+.flex { display: flex; } .items-center { align-items: center; } .gap-2 { gap: 0.5rem; }
+.label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--color-text-muted); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
