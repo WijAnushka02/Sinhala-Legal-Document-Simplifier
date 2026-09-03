@@ -1,244 +1,443 @@
-# 🇱🇰 LankaServe AI
+# 🇱🇰 Sinhala Legal Document Simplifier
 
-### Multilingual AI-Powered Public Information Assistant for Sri Lanka
+### AI-Powered Sinhala Legal Information Simplification Using a Small Language Model, RAG & Gemini API
 
-> **Making essential public information easier to access — through Web, AI, and Voice.**
-
-LankaServe AI is a multilingual AI-powered public information assistant designed to help Sri Lankan citizens access government, public-service, and sector-specific information through **Web and telephone-based interfaces**.
-
-The system combines a **Small Language Model (SLM)**, **Gemini API**, **Retrieval-Augmented Generation (RAG)**, and an **IVR/DTMF-style navigation system** inspired by the way customers interact with telephone-based customer service systems.
-
-Users can select their preferred language, choose a relevant service sector, and ask for or retrieve information using either a web interface or a phone-based menu.
-
-The initial focus is on **Sinhala**, with support planned for **Tamil and English**.
+> **Making Sri Lankan legal information easier to understand — without changing what it means.**
 
 ---
 
-## 📌 Problem Statement
+## 📌 Overview
 
-Many citizens need information about government services, public institutions, procedures, eligibility requirements, documents, deadlines, and other essential services.
+**Sinhala Legal Document Simplifier** is an AI-powered system designed to help Sri Lankan users understand complex legal and administrative documents written in Sinhala.
 
-However, accessing this information can be difficult because:
+The system combines a **Sinhala-focused Small Language Model (SLM)**, **Retrieval-Augmented Generation (RAG)**, and the **Gemini API** to retrieve, understand, simplify, and explain legal information while attempting to preserve the original legal meaning.
 
-* Government information is distributed across many websites and documents.
-* Official documents often contain complex administrative and legal language.
-* Information may not be easy to understand for ordinary citizens.
-* Not everyone is comfortable navigating websites or mobile applications.
-* Citizens may have limited access to reliable digital services.
-* Sinhala and Tamil information access can be more challenging than English.
-* Users often need to search through lengthy documents to find a single piece of information.
-* Traditional telephone services usually depend on fixed menus and do not provide intelligent language understanding.
+The system will be accessible through both:
 
-This creates a gap between **available information** and **accessible information**.
+* 🌐 Web Application
+* ☎️ Telephone-based IVR/DTMF Interface
 
-LankaServe AI aims to reduce this gap by providing a simple, multilingual interface that allows citizens to access verified public information using either a **web interface or a telephone-based interaction system**.
+The telephone interface follows a menu-based interaction model similar to conventional customer-service systems. Users can select their preferred language, select a legal-information category, and access relevant information using keypad numbers.
+
+The primary research focus is the development and evaluation of a **small language model specialized in Sinhala legal-language understanding and simplification**.
+
+---
+
+# ❗ Problem Statement
+
+Sri Lankan legal documents often contain:
+
+* Complex Sinhala terminology
+* Long and formal sentences
+* Legal terminology that is difficult for ordinary citizens to understand
+* Multiple conditions and exceptions
+* Complicated procedures
+* Legal obligations and restrictions
+* Important dates, deadlines, and numerical information
+
+Although many legal documents are publicly available, **availability does not necessarily mean accessibility or understandability**.
+
+For example, a citizen may have access to an Act, regulation, Gazette notification, or government legal document but may struggle to determine:
+
+* What does this mean?
+* What am I required to do?
+* What are my rights?
+* What documents are required?
+* What is the deadline?
+* What happens if I do not comply?
+* Are there any exceptions?
+
+Existing general-purpose AI systems can help explain such information, but they may introduce serious problems when dealing with legal content, including:
+
+* Hallucination
+* Missing important conditions
+* Changing the original meaning
+* Incorrect interpretation of legal terminology
+* Incorrect dates or numbers
+* Inventing information that does not exist in the source
+* Providing confident answers without sufficient evidence
+
+Therefore, there is a need for a system specifically designed to **simplify Sinhala legal information while preserving important legal meaning and grounding responses in verified sources**.
 
 ---
 
 # 💡 Proposed Solution
 
-LankaServe AI provides a unified AI-based platform where a user can:
+The proposed system will provide an AI-powered platform for understanding Sinhala legal documents.
+
+A user will be able to:
 
 1. Select a preferred language.
-2. Select a relevant service sector.
-3. Ask a question or select a service.
-4. Retrieve information from verified sources.
-5. Receive an easy-to-understand response.
-6. Continue asking follow-up questions where supported.
-7. Access the same service through Web or IVR/DTMF.
+2. Select a legal-information category.
+3. Upload a legal document or enter legal text.
+4. Ask questions about the document.
+5. Retrieve relevant information from verified legal sources.
+6. Receive a simplified Sinhala explanation.
+7. View the original legal content alongside the simplified explanation.
+8. Identify important conditions, obligations, dates, and entities.
+9. Access legal information through a telephone-based IVR/DTMF interface.
 
-### Example
-
-A user calls the LankaServe AI service.
-
-```text
-Welcome to LankaServe AI.
-
-Select your language:
-
-1. සිංහල
-2. தமிழ்
-3. English
-```
-
-The user presses:
+The system will combine:
 
 ```text
-1
+Small Language Model
+        +
+Retrieval-Augmented Generation
+        +
+Gemini API
+        +
+Legal Meaning Validation
+        +
+Web / IVR Interface
 ```
-
-Then:
-
-```text
-ඔබට අවශ්‍ය සේවා අංශය තෝරන්න.
-
-1. රජයේ සේවා
-2. සෞඛ්‍ය සේවා
-3. අධ්‍යාපන සේවා
-4. රැකියා හා කම්කරු සේවා
-5. නීතිමය තොරතුරු
-6. වෙනත් සේවා
-```
-
-The user presses:
-
-```text
-5
-```
-
-The system can then provide options such as:
-
-```text
-නීතිමය තොරතුරු සඳහා,
-
-1. පාරිභෝගික අයිතිවාසිකම්
-2. කම්කරු නීති
-3. රජයේ නීතිමය සේවා
-4. වෙනත්
-```
-
-The user can then ask a question through supported voice interaction or select a predefined service.
 
 ---
 
-# 🎯 Main Objectives
+# 🎯 Project Objectives
 
-### 1. Improve Public Information Accessibility
+### Primary Objective
 
-Make important public information easier to find and understand.
+Develop a Sinhala-focused Small Language Model capable of assisting with the understanding and simplification of Sri Lankan legal documents while preserving important legal information.
 
-### 2. Support Local Languages
+### Secondary Objectives
 
-Provide Sinhala-first access while designing the architecture for Tamil and English.
-
-### 3. Develop a Small Language Model
-
-Train a lightweight language model specifically for the target domain and Sinhala-language requirements.
-
-### 4. Provide Reliable AI Responses
-
-Use RAG and verified sources to reduce hallucinations and unsupported answers.
-
-### 5. Provide Multiple Access Methods
-
-Provide the same information through:
-
-* Web application
-* AI conversational interface
-* IVR
-* DTMF/number-based navigation
-
-### 6. Improve Information Understanding
-
-Convert complex government, administrative, and legal information into simpler language without changing important information.
+* Develop a curated Sinhala legal-language dataset.
+* Train a lightweight Transformer-based language model.
+* Develop a legal-document processing pipeline.
+* Implement Retrieval-Augmented Generation using verified legal sources.
+* Integrate Gemini API as a supporting AI component.
+* Detect important legal entities and information.
+* Validate simplified responses against the original legal content.
+* Develop a web-based interface.
+* Develop a telephone-based IVR/DTMF interface.
+* Evaluate the system's accuracy, readability, and meaning preservation.
 
 ---
 
-# 🧠 Research Component
+# 🧠 Core Concept
 
-The main research contribution of this project is the development and evaluation of a **Small Language Model for Sinhala public-service information processing**.
+The core concept of the project is:
 
-Instead of depending entirely on a large commercial model, LankaServe AI will investigate whether a smaller domain-focused model can effectively perform tasks such as:
+> **Simplification without meaning distortion.**
 
-* Sinhala text understanding
-* Question classification
-* Intent detection
-* Information extraction
-* Query reformulation
-* Legal/administrative text simplification
-* Public-service question answering
-* Response validation
+The system should make legal information easier to understand while preserving:
 
-The SLM can be trained using a curated dataset containing Sinhala public-service and administrative information.
-
----
-
-# 🤖 Role of Gemini API
-
-Gemini API will be used as a supporting AI component within the system.
-
-It will **not replace the research SLM**.
-
-Possible Gemini responsibilities include:
-
-* Natural-language understanding
-* Response generation
-* Complex query interpretation
-* Document understanding
-* Query expansion
-* Summarization
-* Answer validation
-* Comparing SLM and Gemini responses
-* Generating training-data candidates
-* Supporting multilingual responses
-
-The Gemini API supports API-key authentication and can be integrated using Google's SDKs or REST APIs. API credentials should remain on the backend and be stored through environment variables such as `GEMINI_API_KEY`.
+```text
+Legal Meaning
+     │
+     ├── Obligations
+     ├── Rights
+     ├── Conditions
+     ├── Exceptions
+     ├── Restrictions
+     ├── Penalties
+     ├── Dates
+     ├── Numbers
+     ├── Entities
+     └── Procedures
+```
 
 For example:
+
+### Original
+
+> නියමිත කාල සීමාව තුළ අයදුම්පත ඉදිරිපත් කිරීමට අපොහොසත් වන අයදුම්කරුවෙකුට අදාළ සේවාව ලබා ගැනීම සඳහා නැවත අයදුම් කිරීමට සිදුවේ.
+
+### Simplified
+
+> අයදුම්පත නියමිත කාලය තුළ ලබා නොදුන්නොත්, එම සේවාව ලබා ගැනීමට නැවත අයදුම් කිරීමට සිදුවේ.
+
+### Extracted Information
+
+```text
+Person:
+Applicant
+
+Action:
+Submit application
+
+Deadline:
+Specified time period
+
+Condition:
+Application is not submitted within the required period
+
+Consequence:
+Applicant must reapply
+```
+
+The simplified version should be easier to understand without removing the important condition or consequence.
+
+---
+
+# 🤖 Role of the Small Language Model
+
+The **Small Language Model (SLM)** is the main research component of this project.
+
+Rather than relying entirely on a large commercial model, a smaller Transformer-based model will be developed and trained for Sinhala legal-language tasks.
+
+Potential capabilities include:
+
+* Sinhala legal text understanding
+* Legal clause classification
+* Intent classification
+* Information extraction
+* Legal text simplification
+* Question understanding
+* Legal question answering
+* Query reformulation
+* Response validation
+
+The model will be optimized for the project's specific domain instead of attempting to become a general-purpose language model.
+
+---
+
+# 🔬 Small Language Model Training
+
+The training pipeline will follow:
+
+```text
+Sri Lankan Legal Documents
+            │
+            ▼
+      Data Collection
+            │
+            ▼
+       Data Cleaning
+            │
+            ▼
+      Text Extraction
+            │
+            ▼
+ Sentence / Clause Segmentation
+            │
+            ▼
+          Annotation
+            │
+            ▼
+      Sinhala Dataset
+            │
+            ▼
+         Tokenizer
+            │
+            ▼
+     Transformer Training
+            │
+            ▼
+      Domain Fine-tuning
+            │
+            ▼
+        Evaluation
+            │
+            ▼
+      Model Deployment
+```
+
+---
+
+# 📚 Legal Dataset
+
+The dataset will contain carefully collected and processed Sinhala legal information.
+
+Potential sources include:
+
+* Sri Lankan Acts
+* Regulations
+* Gazette notifications
+* Legal notices
+* Government legal documents
+* Public legal information
+* Official government publications
+* Publicly available legal documents
+
+Official sources should be prioritized wherever possible.
+
+### Dataset Example
+
+```json
+{
+  "language": "si",
+  "category": "consumer_law",
+  "clause_type": "OBLIGATION",
+  "legal_text": "නියමිත කාලසීමාව තුළ අයදුම්පත ඉදිරිපත් කළ යුතුය.",
+  "simplified_text": "අයදුම්පත නියමිත කාලය ඇතුළත ලබා දිය යුතුය.",
+  "entities": [],
+  "conditions": [],
+  "exceptions": [],
+  "source": "Official Legal Source"
+}
+```
+
+### Dataset Fields
+
+```text
+Document ID
+Original Text
+Simplified Text
+Language
+Legal Category
+Clause Type
+Entities
+Dates
+Numbers
+Conditions
+Exceptions
+Obligations
+Source
+Publication Date
+Last Verified Date
+```
+
+---
+
+# 🏷️ Legal Clause Classification
+
+The system can classify legal statements into categories such as:
+
+```text
+OBLIGATION
+RIGHT
+PROHIBITION
+CONDITION
+EXCEPTION
+PENALTY
+DEADLINE
+DEFINITION
+PROCEDURE
+ELIGIBILITY
+REQUIREMENT
+RESTRICTION
+```
+
+Example:
+
+```text
+"අයදුම්කරු විසින් අයදුම්පත ඉදිරිපත් කළ යුතුය."
+
+        ↓
+
+OBLIGATION
+```
+
+This classification can help the system understand which information must be preserved during simplification.
+
+---
+
+# 📖 Retrieval-Augmented Generation
+
+The system will use **RAG** to ground AI responses in verified legal information.
+
+Instead of allowing the AI to answer entirely from its learned knowledge:
 
 ```text
 User Question
       ↓
-Small Language Model
+Search Legal Knowledge Base
       ↓
-RAG Retrieval
+Retrieve Relevant Legal Information
       ↓
-Gemini API
+SLM / Gemini
       ↓
-Response Validation
-      ↓
-Final Answer
+Generate Response
 ```
 
-This creates a **hybrid AI architecture** rather than simply building a wrapper around Gemini.
+This reduces the risk of unsupported responses and allows the system to provide the source of the information.
 
 ---
 
-# 📚 Retrieval-Augmented Generation
-
-LankaServe AI will use **RAG** to retrieve relevant information from trusted sources before generating an answer.
-
-### Knowledge Sources
-
-The initial knowledge base can contain:
-
-* Government publications
-* Government circulars
-* Acts and regulations
-* Ministry information
-* Department information
-* Official service instructions
-* Public-service documents
-* Official forms
-* Government FAQs
-* Other verified public information
-
-Where possible, information should originate from official government sources.
-
-### RAG Pipeline
+# 🔎 RAG Pipeline
 
 ```text
-Official Documents
-        ↓
-Document Processing
-        ↓
-Text Extraction
-        ↓
-Chunking
-        ↓
-Embedding Generation
-        ↓
-Vector Database
-        ↓
-User Query
-        ↓
-Semantic Retrieval
-        ↓
-Relevant Information
-        ↓
-SLM / Gemini
-        ↓
-Validated Response
+Official Legal Documents
+          │
+          ▼
+    Text Extraction
+          │
+          ▼
+      Cleaning
+          │
+          ▼
+       Chunking
+          │
+          ▼
+      Embeddings
+          │
+          ▼
+    Vector Database
+          │
+          │
+          ▼
+      User Question
+          │
+          ▼
+     Query Embedding
+          │
+          ▼
+   Semantic Retrieval
+          │
+          ▼
+ Relevant Legal Context
+          │
+          ▼
+ SLM / Gemini Processing
+          │
+          ▼
+   Response Validation
+          │
+          ▼
+      Final Answer
+```
+
+---
+
+# ✨ Gemini API Integration
+
+Gemini API will be used as a **supporting component**, while the custom SLM remains the primary research component.
+
+Potential Gemini responsibilities include:
+
+* Complex legal-text interpretation
+* Response generation
+* Document understanding
+* Summarization
+* Query reformulation
+* Multilingual processing
+* Response comparison
+* Response validation
+* Supporting dataset generation
+* Evaluation assistance
+
+The architecture will therefore investigate a hybrid approach:
+
+```text
+             ┌────────────────────┐
+             │ Small Language     │
+             │ Model              │
+             └─────────┬──────────┘
+                       │
+                       ▼
+             ┌────────────────────┐
+             │       RAG          │
+             └─────────┬──────────┘
+                       │
+                       ▼
+             ┌────────────────────┐
+             │    Gemini API      │
+             └─────────┬──────────┘
+                       │
+                       ▼
+             ┌────────────────────┐
+             │ Response           │
+             │ Validation         │
+             └────────────────────┘
+```
+
+The Gemini API key will be stored securely on the backend and must never be exposed in the frontend application or committed to GitHub.
+
+Example:
+
+```env
+GEMINI_API_KEY=your_api_key
 ```
 
 ---
@@ -246,387 +445,483 @@ Validated Response
 # 🏗️ System Architecture
 
 ```text
-                              ┌─────────────────────┐
-                              │        USER         │
-                              └──────────┬──────────┘
+                              ┌──────────────────────┐
+                              │        USER          │
+                              └──────────┬───────────┘
                                          │
-                    ┌────────────────────┼────────────────────┐
-                    │                    │                    │
-                    ▼                    ▼                    ▼
-          ┌────────────────┐   ┌─────────────────┐   ┌─────────────────┐
-          │  Web Interface │   │   Mobile/Web    │   │  Telephone/IVR  │
-          │     React      │   │    Interface    │   │   DTMF System   │
-          └───────┬────────┘   └────────┬────────┘   └────────┬────────┘
-                  │                     │                     │
-                  └─────────────────────┼─────────────────────┘
-                                        ▼
-                              ┌─────────────────────┐
-                              │    API Gateway      │
-                              │      FastAPI        │
-                              └──────────┬──────────┘
-                                         │
-                    ┌────────────────────┼────────────────────┐
-                    │                    │                    │
-                    ▼                    ▼                    ▼
-          ┌────────────────┐   ┌─────────────────┐   ┌─────────────────┐
-          │ Language       │   │ Intent / Sector │   │ User Query      │
-          │ Detection      │   │ Classification  │   │ Processing       │
-          └───────┬────────┘   └────────┬────────┘   └────────┬────────┘
-                  │                     │                     │
-                  └─────────────────────┼─────────────────────┘
-                                        ▼
-                              ┌─────────────────────┐
-                              │   Small Language    │
-                              │       Model         │
-                              │   Sinhala-focused   │
-                              └──────────┬──────────┘
-                                         │
-                          ┌──────────────┴──────────────┐
-                          │                             │
-                          ▼                             ▼
-                ┌──────────────────┐          ┌──────────────────┐
-                │       RAG        │          │   Gemini API     │
-                │ Knowledge Base   │          │                  │
-                └────────┬─────────┘          └────────┬─────────┘
-                         │                             │
-                         ▼                             │
-                ┌──────────────────┐                  │
-                │ Vector Database  │                  │
-                │ FAISS / Chroma   │                  │
-                └────────┬─────────┘                  │
-                         │                             │
-                         └──────────────┬──────────────┘
-                                        ▼
-                              ┌─────────────────────┐
-                              │ Response Validation │
-                              │                     │
-                              │ • Factuality       │
-                              │ • Source Check      │
-                              │ • Entity Check      │
-                              │ • Number Check      │
-                              │ • Meaning Check     │
-                              └──────────┬──────────┘
-                                         │
-                                         ▼
-                              ┌─────────────────────┐
-                              │ Final Response      │
-                              │                     │
-                              │ Sinhala / Tamil /   │
-                              │ English             │
-                              └─────────────────────┘
+                    ┌────────────────────┴────────────────────┐
+                    │                                         │
+                    ▼                                         ▼
+          ┌──────────────────┐                    ┌──────────────────┐
+          │   React Web App  │                    │ Telephone / IVR  │
+          │                  │                    │     DTMF         │
+          └────────┬─────────┘                    └────────┬─────────┘
+                   │                                       │
+                   └──────────────────┬────────────────────┘
+                                      ▼
+                           ┌──────────────────────┐
+                           │    FastAPI Backend   │
+                           └──────────┬───────────┘
+                                      │
+                                      ▼
+                           ┌──────────────────────┐
+                           │ Document Processing  │
+                           │                      │
+                           │ • PDF Extraction    │
+                           │ • OCR                │
+                           │ • Cleaning           │
+                           │ • Chunking           │
+                           └──────────┬───────────┘
+                                      │
+                                      ▼
+                           ┌──────────────────────┐
+                           │ Legal Text Analysis  │
+                           │                      │
+                           │ • Clause Detection  │
+                           │ • Entity Extraction │
+                           │ • Intent Detection  │
+                           │ • Conditions        │
+                           │ • Obligations       │
+                           └──────────┬───────────┘
+                                      │
+                         ┌────────────┴────────────┐
+                         │                         │
+                         ▼                         ▼
+                ┌──────────────────┐     ┌──────────────────┐
+                │ Small Language   │     │ Legal Knowledge  │
+                │ Model            │     │ Base             │
+                │                  │     │                  │
+                │ Sinhala NLP      │     │ Acts             │
+                │ Transformer      │     │ Regulations      │
+                └────────┬─────────┘     │ Gazette          │
+                         │               │ Official Sources │
+                         │               └────────┬─────────┘
+                         │                        │
+                         │                        ▼
+                         │               ┌──────────────────┐
+                         │               │ Vector Database  │
+                         │               │ FAISS / Chroma   │
+                         │               └────────┬─────────┘
+                         │                        │
+                         └────────────┬───────────┘
+                                      ▼
+                           ┌──────────────────────┐
+                           │     Gemini API      │
+                           │                      │
+                           │ Generation /        │
+                           │ Reasoning /         │
+                           │ Validation Support  │
+                           └──────────┬───────────┘
+                                      │
+                                      ▼
+                           ┌──────────────────────┐
+                           │ Meaning Preservation │
+                           │       Validation     │
+                           │                      │
+                           │ • Entities           │
+                           │ • Dates              │
+                           │ • Numbers            │
+                           │ • Conditions         │
+                           │ • Obligations        │
+                           │ • Exceptions         │
+                           └──────────┬───────────┘
+                                      │
+                                      ▼
+                           ┌──────────────────────┐
+                           │     Final Output     │
+                           │                      │
+                           │ Original Text        │
+                           │ Simplified Text      │
+                           │ Key Information      │
+                           │ Source               │
+                           └──────────────────────┘
 ```
 
 ---
 
-# ☎️ IVR / DTMF Architecture
+# ☎️ IVR / DTMF Interface
 
-The telephone interface will follow a **number-based navigation model** similar to conventional customer-service systems.
+A telephone-based interface will allow users to access legal information using a keypad.
+
+The interaction will follow a menu-driven model.
+
+### Step 1 — Language Selection
 
 ```text
-                User Calls Service
-                       │
-                       ▼
-              ┌─────────────────┐
-              │   IVR Gateway   │
-              └────────┬────────┘
-                       │
-                       ▼
-             Select Preferred Language
-                       │
-        ┌──────────────┼──────────────┐
-        ▼              ▼              ▼
-     Sinhala          Tamil         English
-        │              │              │
-        └──────────────┼──────────────┘
-                       ▼
-                Select Sector
-                       │
-       ┌───────────────┼────────────────┐
-       ▼               ▼                ▼
-   Government       Healthcare       Education
-       │               │                │
-       └───────────────┼────────────────┘
-                       ▼
-                 Select Service
-                       │
-                       ▼
-                  User Query
-                       │
-                       ▼
-              AI Processing Layer
-                       │
-          ┌────────────┴────────────┐
-          ▼                         ▼
-         SLM                       RAG
-          │                         │
-          └────────────┬────────────┘
-                       ▼
-                  Gemini API
-                       │
-                       ▼
-               Response Validation
-                       │
-                       ▼
-                 Voice Response
-                       │
-                       ▼
-                     User
+Welcome to Sinhala Legal Information Service.
+
+Press 1 for Sinhala.
+Press 2 for Tamil.
+Press 3 for English.
 ```
 
----
+### Step 2 — Legal Category
 
-# 🔢 DTMF Interaction Example
+For example:
 
 ```text
-CALL
- │
- ▼
-Language Selection
- │
- ├── 1 → Sinhala
- ├── 2 → Tamil
- └── 3 → English
-          │
-          ▼
-Sector Selection
- │
- ├── 1 → Government Services
- ├── 2 → Healthcare
- ├── 3 → Education
- ├── 4 → Employment
- ├── 5 → Legal Information
- └── 6 → Other
-          │
-          ▼
-Service Selection
-          │
-          ▼
-AI Processing
-          │
-          ▼
-Information Retrieval
-          │
-          ▼
+Select the legal information category.
+
+Press 1 for Consumer Law.
+Press 2 for Labour Law.
+Press 3 for Property Law.
+Press 4 for General Legal Information.
+Press 5 for Other Legal Information.
+```
+
+### Step 3 — Service / Topic
+
+```text
+Select the topic.
+
+Press 1 for Rights.
+Press 2 for Requirements.
+Press 3 for Procedures.
+Press 4 for Deadlines.
+Press 5 for Penalties.
+```
+
+### Step 4 — AI Processing
+
+```text
+DTMF Input
+     ↓
+Language
+     ↓
+Legal Category
+     ↓
+Topic / Intent
+     ↓
+Legal Knowledge Base
+     ↓
+SLM
+     ↓
+RAG
+     ↓
+Gemini API
+     ↓
+Validation
+     ↓
 Voice Response
 ```
 
-This allows users who may not be comfortable with websites or smartphone applications to access the same information through a telephone.
+---
+
+# 🔢 IVR System Architecture
+
+```text
+                    Incoming Call
+                          │
+                          ▼
+                  ┌───────────────┐
+                  │  IVR Gateway  │
+                  └───────┬───────┘
+                          │
+                          ▼
+                  Language Selection
+                          │
+              ┌───────────┼───────────┐
+              ▼           ▼           ▼
+           Sinhala       Tamil      English
+              │           │           │
+              └───────────┼───────────┘
+                          ▼
+                  Legal Category
+                          │
+                          ▼
+                    Topic / Intent
+                          │
+                          ▼
+                  Backend API
+                          │
+                          ▼
+                 Legal RAG System
+                          │
+                          ▼
+                  Small Language
+                      Model
+                          │
+                          ▼
+                     Gemini API
+                          │
+                          ▼
+                Response Validation
+                          │
+                          ▼
+                   Text-to-Speech
+                          │
+                          ▼
+                     User Call
+```
+
+The exact telephony provider and integration mechanism can be selected during implementation based on the available SLT-MOBITEL telephony/IVR infrastructure and APIs.
 
 ---
 
-# 🧩 Core System Components
+# 🌐 Web Application
 
-## 1. Language Detection
+The web interface will provide a more detailed experience than the telephone interface.
 
-Detect the user's preferred language and route the request to the appropriate processing pipeline.
+### Main Features
 
-Supported languages:
-
-```text
-Sinhala
-Tamil
-English
-```
-
----
-
-## 2. Sector Classification
-
-The system categorizes user requests into relevant service sectors.
-
-Example:
-
-```text
-Government Services
-Healthcare
-Education
-Employment
-Legal Information
-Social Services
-Transport
-Other Public Services
-```
-
-The initial MVP should focus on a small number of sectors rather than attempting to cover every public service.
-
----
-
-## 3. Intent Detection
-
-The system identifies what the user is trying to accomplish.
-
-Example:
-
-```text
-User:
-"උප්පැන්න සහතිකයක් ලබා ගන්නේ කොහොමද?"
-
-Intent:
-BIRTH_CERTIFICATE_APPLICATION
-```
-
-Another example:
-
-```text
-User:
-"රැකියා විරහිත ප්‍රතිලාභ ලබාගන්න පුළුවන්ද?"
-
-Intent:
-UNEMPLOYMENT_BENEFIT_ELIGIBILITY
-```
-
----
-
-# 🧠 Small Language Model Pipeline
-
-```text
-Public Service Documents
-          │
-          ▼
-      Data Cleaning
-          │
-          ▼
-     Sinhala Tokenization
-          │
-          ▼
-      Dataset Creation
-          │
-          ▼
-   Model Pre-training
-          │
-          ▼
-    Domain Fine-tuning
-          │
-          ▼
-   Evaluation & Testing
-          │
-          ▼
-      SLM Deployment
-```
-
-### Possible Training Tasks
-
-The model can be trained for:
-
-* Text classification
-* Intent classification
+* Language selection
+* Legal category selection
+* Legal document upload
+* Text input
 * Question answering
-* Information extraction
-* Text simplification
-* Query understanding
-* Response generation
+* Document simplification
+* Key information extraction
+* Source display
+* Original vs simplified comparison
+* Important condition highlighting
+* Confidence / validation indicators
+
+### Example Interface
+
+```text
+┌──────────────────────────────────────────────┐
+│       🇱🇰 Sinhala Legal Document             │
+│              Simplifier                     │
+├──────────────────────────────────────────────┤
+│                                              │
+│ Language                                     │
+│ [ සිංහල ] [ தமிழ் ] [ English ]             │
+│                                              │
+│ Legal Category                               │
+│ [ Consumer Law ▼ ]                            │
+│                                              │
+│ Upload Document                              │
+│ [ Upload PDF ]                               │
+│                                              │
+│ OR                                           │
+│                                              │
+│ Enter Legal Text                             │
+│ ┌──────────────────────────────────────────┐ │
+│ │                                          │ │
+│ │ Paste legal text here...                 │ │
+│ │                                          │ │
+│ └──────────────────────────────────────────┘ │
+│                                              │
+│              [ Simplify ]                    │
+└──────────────────────────────────────────────┘
+```
+
+### Result
+
+```text
+┌──────────────────────┬──────────────────────┐
+│ Original Legal Text  │ Simplified Sinhala   │
+├──────────────────────┼──────────────────────┤
+│ Complex legal       │ Easy-to-understand   │
+│ sentence...         │ explanation...       │
+└──────────────────────┴──────────────────────┘
+
+Important Information
+
+✓ Obligation
+✓ Deadline
+✓ Condition
+✓ Exception
+
+Source:
+Official Legal Document
+```
 
 ---
 
-# 📊 Dataset Structure
+# 🔐 Meaning Preservation
 
-Example:
+One of the most important components of the project is **legal meaning preservation**.
 
-```json
-{
-  "language": "si",
-  "sector": "government_services",
-  "intent": "birth_certificate",
-  "question": "උප්පැන්න සහතිකයක් ලබා ගන්නේ කෙසේද?",
-  "context": "Official government information...",
-  "answer": "අදාළ කාර්යාලය හරහා නියමිත ක්‍රියාපටිපාටිය අනුව අයදුම් කළ යුතුය.",
-  "source": "Official Government Source"
-}
-```
+The system should compare the original and simplified content.
 
-Additional metadata can include:
+### Validation Pipeline
 
 ```text
-Document ID
-Source URL
-Publication Date
-Last Verified Date
-Sector
-Service
-Language
-Entities
-Requirements
-Fees
-Processing Time
-Conditions
-Exceptions
+Original Legal Text
+        │
+        ├───────────────┐
+        │               │
+        ▼               ▼
+Important Information   Simplification
+Extraction              │
+        │               │
+        │               ▼
+        │        Simplified Text
+        │               │
+        └───────┬───────┘
+                ▼
+        Comparison Engine
+                │
+        ┌───────┼────────┐
+        ▼       ▼        ▼
+     Entities Dates    Numbers
+        │       │        │
+        └───────┼────────┘
+                ▼
+        Conditions /
+        Obligations /
+        Exceptions
+                │
+                ▼
+       Meaning Preservation
+             Score
 ```
 
 ---
 
-# 🔍 Information Verification
+# 📊 Evaluation Metrics
 
-Since this system deals with public and potentially legal information, reliability is an important part of the research.
+The system will be evaluated using multiple dimensions.
 
-The system should validate:
+## SLM Evaluation
 
-### Entity Preservation
+* Accuracy
+* Precision
+* Recall
+* F1 Score
+* Perplexity
+* Intent Classification Accuracy
 
-```text
-Original:
-Department of Immigration
+## RAG Evaluation
 
-Response:
-Department of Immigration
-```
+* Retrieval Accuracy
+* Context Relevance
+* Answer Faithfulness
+* Source Accuracy
+* Hallucination Rate
 
-### Number Preservation
+## Simplification Evaluation
 
-```text
-Original:
-Rs. 5,000
+* Semantic Similarity
+* Readability
+* Fluency
+* Meaning Preservation
+* Human Evaluation
 
-Response:
-Rs. 5,000
-```
+## Legal Information Preservation
 
-### Date Preservation
-
-```text
-Original:
-30 September 2026
-
-Response:
-30 September 2026
-```
-
-### Condition Preservation
+The system will specifically evaluate:
 
 ```text
-Original:
-Applicants must submit the application within 30 days.
-
-Response:
-The application must be submitted within 30 days.
+Entity Preservation
+Date Preservation
+Number Preservation
+Condition Preservation
+Obligation Preservation
+Exception Preservation
+Requirement Preservation
+Procedure Preservation
+Penalty Preservation
 ```
 
-The system should avoid changing:
+---
 
-* Dates
-* Numbers
-* Fees
-* Eligibility conditions
-* Requirements
-* Obligations
-* Exceptions
-* Names of institutions
-* Important procedures
+# 🧪 Research Experiments
+
+The project can compare several approaches.
+
+### Experiment 1
+
+```text
+SLM
+```
+
+### Experiment 2
+
+```text
+SLM + RAG
+```
+
+### Experiment 3
+
+```text
+Gemini + RAG
+```
+
+### Experiment 4
+
+```text
+SLM + Gemini
+```
+
+### Experiment 5
+
+```text
+SLM + RAG + Gemini + Validation
+```
+
+The performance of these approaches can then be compared.
+
+This provides a strong research component for determining whether a **hybrid architecture can improve Sinhala legal-information accessibility and accuracy**.
+
+---
+
+# 🔬 Research Questions
+
+### Primary Research Question
+
+> **How effectively can a Sinhala-focused Small Language Model simplify Sri Lankan legal documents while preserving their original legal meaning?**
+
+### Secondary Research Questions
+
+1. How does RAG affect the factual accuracy of Sinhala legal-information responses?
+
+2. How does a hybrid SLM and Gemini architecture compare with Gemini-only approaches?
+
+3. How effectively can the proposed system preserve legal obligations, conditions, exceptions, dates, and numbers?
+
+4. Can a domain-specific Sinhala SLM provide competitive performance while requiring significantly fewer computational resources than large language models?
+
+5. How effective is an IVR/DTMF interface for accessing simplified legal information?
+
+---
+
+# 🧩 Main System Components
+
+```text
+1. Document Processing
+2. Sinhala NLP
+3. Legal Clause Classification
+4. Small Language Model
+5. Legal Knowledge Base
+6. RAG
+7. Gemini API
+8. Meaning Preservation Engine
+9. Web Application
+10. IVR / DTMF System
+11. Evaluation Framework
+```
 
 ---
 
 # 🛠️ Technology Stack
 
-## Artificial Intelligence / Machine Learning
+## AI / Machine Learning
 
 * Python
 * PyTorch
 * Hugging Face Transformers
-* SentencePiece / BPE Tokenizer
+* SentencePiece
+* BPE Tokenization
 * Scikit-learn
 * Gemini API
-* RAG
-* Sentence Embeddings
-* FAISS / ChromaDB
+
+## NLP
+
+* Sinhala NLP
+* Tokenization
+* Named Entity Recognition
+* Text Classification
+* Semantic Similarity
+* Text Simplification
+
+## RAG
+
+* FAISS
+* ChromaDB
+* Vector Embeddings
+* LangChain or custom RAG pipeline
 
 ## Backend
 
@@ -634,6 +929,9 @@ The system should avoid changing:
 * FastAPI
 * Pydantic
 * REST API
+
+## Database
+
 * PostgreSQL
 
 ## Frontend
@@ -648,413 +946,31 @@ The system should avoid changing:
 * PyMuPDF
 * pdfplumber
 * python-docx
-* OCR for scanned documents where required
+* OCR
 
-## Voice / Telephone Layer
+## Voice / Telephone
 
 * IVR
 * DTMF
-* SIP/Telephony integration
+* SIP / Telephony APIs
 * Speech-to-Text
 * Text-to-Speech
 
-The exact telephony provider/integration can be selected during implementation based on available SLT-MOBITEL services and API/telephony access.
-
-## DevOps
+## Development / Deployment
 
 * Git
 * GitHub
 * Docker
 * GitHub Actions
-* Google Colab / GPU environment
+* Google Colab / GPU Environment
 * Linux
-
----
-
-# 🏛️ High-Level Architecture
-
-```text
-                         LANKASERVE AI
-                              │
-       ┌──────────────────────┼──────────────────────┐
-       │                      │                      │
-       ▼                      ▼                      ▼
-     WEB APP               IVR/DMTF             FUTURE APP
-       │                      │                      │
-       └──────────────────────┼──────────────────────┘
-                              ▼
-                       FastAPI Backend
-                              │
-                ┌─────────────┼─────────────┐
-                │             │             │
-                ▼             ▼             ▼
-           Language        Intent         Query
-           Detection      Detection      Processing
-                │             │             │
-                └─────────────┼─────────────┘
-                              ▼
-                     Small Language Model
-                              │
-                ┌─────────────┴─────────────┐
-                ▼                           ▼
-               RAG                     Gemini API
-                │                           │
-                ▼                           │
-          Vector Database                   │
-                │                           │
-                └─────────────┬─────────────┘
-                              ▼
-                     Response Validation
-                              │
-                              ▼
-                     Multilingual Response
-                              │
-                 ┌────────────┴────────────┐
-                 ▼                         ▼
-              Web Text                 Voice Output
-```
-
----
-
-# 🔐 Security Considerations
-
-The system will process potentially sensitive user queries and therefore security will be considered throughout development.
-
-### API Security
-
-* API authentication
-* Rate limiting
-* Input validation
-* CORS configuration
-* Secure API endpoints
-
-### Gemini API Key
-
-The Gemini API key must **never be placed inside the React frontend or committed to GitHub**.
-
-Use:
-
-```env
-GEMINI_API_KEY=your_api_key_here
-```
-
-and keep `.env` excluded through `.gitignore`.
-
-Gemini's current documentation recommends environment variables for API keys and provides mechanisms for restricting and securing keys.
-
-### Additional Security
-
-* HTTPS
-* Secure database credentials
-* Secret management
-* Logging without exposing sensitive user information
-* Input sanitization
-* Access control
-* Abuse/rate-limit protection
-
----
-
-# 📱 Web Application Features
-
-### User Interface
-
-```text
-┌─────────────────────────────────────┐
-│          🇱🇰 LankaServe AI          │
-│                                     │
-│  Select Language                    │
-│                                     │
-│  [ සිංහල ] [ தமிழ் ] [ English ]  │
-│                                     │
-│  Select Service                     │
-│                                     │
-│  [ Government ]                     │
-│  [ Healthcare ]                     │
-│  [ Education ]                      │
-│  [ Employment ]                     │
-│  [ Legal ]                          │
-│                                     │
-│  Ask your question...               │
-│                                     │
-│              [ Ask ]                │
-└─────────────────────────────────────┘
-```
-
-### Response Interface
-
-```text
-Question
-   ↓
-AI Answer
-   ↓
-Relevant Source
-   ↓
-Important Information
-   ↓
-Related Questions
-```
-
----
-
-# 📞 Telephone Interface
-
-The telephone version will provide:
-
-* Language selection
-* Sector selection
-* Service selection
-* DTMF navigation
-* Voice prompts
-* AI-generated responses
-* Repeat option
-* Return to previous menu
-* Transfer/escalation option where applicable
-
-Example:
-
-```text
-Press 1 → Sinhala
-Press 2 → Tamil
-Press 3 → English
-
-Press 1 → Government Services
-Press 2 → Healthcare
-Press 3 → Education
-Press 4 → Employment
-Press 5 → Legal Information
-```
-
----
-
-# 🔄 Complete Request Flow
-
-```text
-                  USER
-                   │
-                   ▼
-            Select Language
-                   │
-                   ▼
-            Select Sector
-                   │
-                   ▼
-             Enter Query
-                   │
-                   ▼
-          Language Detection
-                   │
-                   ▼
-           Intent Detection
-                   │
-                   ▼
-          Query Understanding
-                   │
-                   ▼
-        ┌──────────────────────┐
-        │ Small Language Model │
-        └──────────┬───────────┘
-                   │
-                   ▼
-              RAG Search
-                   │
-                   ▼
-          Retrieve Verified Data
-                   │
-                   ▼
-             Gemini API
-                   │
-                   ▼
-         Response Generation
-                   │
-                   ▼
-       Meaning / Fact Validation
-                   │
-                   ▼
-       ┌───────────┴───────────┐
-       ▼                       ▼
-   Web Response            Voice Response
-```
-
----
-
-# 📈 Evaluation
-
-The system will be evaluated using both technical and human-centered metrics.
-
-## SLM Evaluation
-
-* Accuracy
-* Precision
-* Recall
-* F1 Score
-* Perplexity
-* Intent classification accuracy
-
-## RAG Evaluation
-
-* Retrieval accuracy
-* Context relevance
-* Answer faithfulness
-* Source attribution
-* Hallucination rate
-
-## Language Evaluation
-
-* Semantic similarity
-* Sinhala grammatical quality
-* Readability
-* Translation quality
-* Meaning preservation
-
-## Public-Service Evaluation
-
-The system will specifically measure whether critical information is preserved:
-
-```text
-Entity Preservation
-Number Preservation
-Date Preservation
-Requirement Preservation
-Condition Preservation
-Exception Preservation
-Procedure Preservation
-```
-
-## Human Evaluation
-
-Potential evaluators:
-
-* University students
-* Sinhala-speaking users
-* Tamil-speaking users
-* English-speaking users
-* Domain experts where available
-
-Participants can evaluate:
-
-* Ease of understanding
-* Accuracy
-* Relevance
-* Trustworthiness
-* Usability
-* Response clarity
-
----
-
-# 🧪 Research Questions
-
-### Primary Research Question
-
-> **How effectively can a domain-focused Small Language Model provide accurate and understandable Sinhala public-service information compared with a general-purpose large language model?**
-
-### Secondary Research Questions
-
-1. How does RAG affect the factual accuracy of Sinhala public-service responses?
-
-2. Can a hybrid SLM + Gemini architecture improve response quality?
-
-3. How effectively can the system preserve critical information such as dates, numbers, conditions, and requirements?
-
-4. Can an IVR/DTMF interface improve accessibility to public information for users who do not rely on web applications?
-
-5. How does multilingual support affect the usability and accuracy of the system?
-
----
-
-# 🧠 Research Contribution
-
-The main contribution of LankaServe AI is not simply integrating Gemini.
-
-The research focuses on:
-
-```text
-          Small Language Model
-                   +
-        Sinhala NLP Processing
-                   +
-        Public-Service Dataset
-                   +
-                 RAG
-                   +
-             Gemini API
-                   +
-         Response Validation
-                   +
-          Web + IVR Access
-```
-
-This creates an opportunity to study how **small domain-specific models can work together with large language models and verified knowledge sources** to provide accessible public information.
-
----
-
-# 🚀 MVP Scope
-
-The first version should remain manageable.
-
-### Phase 1
-
-Focus on:
-
-```text
-Language:
-Sinhala
-
-Sectors:
-1. Government Services
-2. Legal/Public Information
-3. Employment
-
-Interface:
-Web Application
-
-AI:
-Small Language Model + RAG + Gemini
-```
-
-### Phase 2
-
-Add:
-
-```text
-Tamil
-English
-More sectors
-Document upload
-Advanced RAG
-Improved evaluation
-```
-
-### Phase 3
-
-Add:
-
-```text
-IVR
-DTMF
-Speech-to-Text
-Text-to-Speech
-Telephone-based interaction
-```
-
-### Phase 4
-
-Evaluate:
-
-```text
-SLM vs Gemini
-SLM + RAG
-Gemini + RAG
-SLM + Gemini + RAG
-```
-
-This comparison can become an important part of the research.
 
 ---
 
 # 📁 Project Structure
 
 ```text
-LankaServe-AI/
+Sinhala-Legal-Document-Simplifier/
 │
 ├── README.md
 │
@@ -1067,7 +983,8 @@ LankaServe-AI/
 ├── documents/
 │   ├── extraction/
 │   ├── preprocessing/
-│   └── chunking/
+│   ├── chunking/
+│   └── ocr/
 │
 ├── tokenizer/
 │   ├── train_tokenizer.py
@@ -1098,25 +1015,33 @@ LankaServe-AI/
 │   ├── generator.py
 │   └── validator.py
 │
-├── ivr/
-│   ├── menus/
-│   ├── dtmf/
-│   ├── voice/
-│   └── telephony/
+├── legal/
+│   ├── clause_classifier.py
+│   ├── entity_extractor.py
+│   ├── obligation_detector.py
+│   ├── condition_detector.py
+│   └── legal_processor.py
 │
 ├── validation/
-│   ├── factuality.py
+│   ├── meaning.py
 │   ├── entities.py
 │   ├── dates.py
 │   ├── numbers.py
-│   └── meaning.py
+│   ├── obligations.py
+│   └── conditions.py
 │
 ├── evaluation/
 │   ├── accuracy.py
 │   ├── readability.py
 │   ├── semantic_similarity.py
-│   ├── rag_evaluation.py
+│   ├── factuality.py
 │   └── human_evaluation.py
+│
+├── ivr/
+│   ├── menus/
+│   ├── dtmf/
+│   ├── voice/
+│   └── telephony/
 │
 ├── backend/
 │   ├── api/
@@ -1141,91 +1066,245 @@ LankaServe-AI/
 ├── docker-compose.yml
 ├── requirements.txt
 ├── .env.example
-├── .gitignore
-└── LICENSE
+└── .gitignore
 ```
 
 ---
 
-# ⚙️ Example Environment Variables
+# 🚀 Development Roadmap
+
+## Phase 1 — Research & Data Collection
+
+* Identify the initial legal domain.
+* Collect publicly available legal documents.
+* Prioritize official sources.
+* Extract Sinhala text.
+* Clean and preprocess the dataset.
+* Develop annotation guidelines.
+
+## Phase 2 — Dataset & SLM
+
+* Develop Sinhala tokenizer.
+* Create training dataset.
+* Implement Transformer architecture.
+* Train initial SLM.
+* Fine-tune for legal-language tasks.
+* Evaluate the model.
+
+## Phase 3 — Legal RAG
+
+* Build legal knowledge base.
+* Generate embeddings.
+* Create vector database.
+* Implement semantic retrieval.
+* Integrate retrieved legal context.
+
+## Phase 4 — Gemini Integration
+
+* Integrate Gemini API.
+* Implement prompt engineering.
+* Develop SLM + Gemini pipeline.
+* Implement response validation.
+* Compare SLM and Gemini outputs.
+
+## Phase 5 — Web Application
+
+* Develop React frontend.
+* Develop FastAPI backend.
+* Implement document upload.
+* Implement legal-text simplification.
+* Implement question answering.
+* Display sources and important information.
+
+## Phase 6 — IVR / DTMF
+
+* Implement language selection.
+* Implement legal-category navigation.
+* Implement DTMF input.
+* Connect telephone interface to backend.
+* Implement voice responses.
+
+## Phase 7 — Evaluation
+
+* Evaluate SLM.
+* Evaluate RAG.
+* Evaluate Gemini integration.
+* Evaluate meaning preservation.
+* Conduct human evaluation.
+* Compare experimental approaches.
+
+---
+
+# 🎯 Recommended MVP
+
+To keep the project achievable, the initial version should **not attempt to cover every area of Sri Lankan law**.
+
+### Initial Scope
+
+```text
+Language:
+Sinhala
+
+Legal Domain:
+One selected legal domain
+
+Example:
+Consumer Protection
+OR
+Labour Law
+OR
+Basic Legal Procedures
+
+AI:
+Small Language Model
++
+RAG
++
+Gemini API
+
+Interface:
+React Web Application
+```
+
+After the core system works, the project can expand into:
+
+```text
+Tamil
+English
+Additional legal domains
+Document upload
+IVR
+DTMF
+Voice interaction
+```
+
+---
+
+# 🔒 Security
+
+Security is especially important because the system may process user-provided legal documents.
+
+### API Security
+
+* Input validation
+* Authentication
+* Authorization
+* Rate limiting
+* CORS configuration
+* Secure API endpoints
+
+### Gemini API Security
+
+The Gemini API key must be stored on the backend.
+
+```text
+Frontend
+   │
+   │ User Request
+   ▼
+FastAPI Backend
+   │
+   │ Gemini API Key
+   ▼
+Gemini API
+```
+
+The API key must **never** be included in:
+
+* React source code
+* GitHub repository
+* Client-side JavaScript
+* Public configuration files
+
+Use environment variables:
 
 ```env
-GEMINI_API_KEY=your_gemini_api_key
-
-DATABASE_URL=your_database_url
-
-VECTOR_DB_PATH=./data/vector_db
-
-MODEL_PATH=./model/checkpoints
+GEMINI_API_KEY=your_api_key
 ```
 
-**Never commit the real `.env` file or API keys to GitHub.**
+and add `.env` to `.gitignore`.
 
 ---
 
-# ⚠️ Responsible AI
+# ⚖️ Responsible AI & Legal Disclaimer
 
-LankaServe AI is intended to provide **information and guidance**, not to replace official authorities or qualified professionals.
+This system is intended to help users **understand publicly available legal information**.
 
-The system should:
+It is not intended to:
 
-* Clearly identify the source of important information.
-* Provide the date when information was last verified.
-* Avoid presenting uncertain information as fact.
-* Avoid inventing government procedures.
-* Preserve important conditions and requirements.
-* Allow users to verify information through official sources.
-* Clearly indicate when the system cannot confidently answer a question.
+* Replace lawyers
+* Provide professional legal advice
+* Make legal decisions
+* Determine legal liability
+* Predict court outcomes
+* Replace official authorities
 
-For legal information in particular:
+The system should clearly communicate uncertainty and provide references to the underlying legal sources whenever possible.
 
-> **This system does not provide legal advice. It provides information intended to help users understand publicly available information. Users should consult an appropriate legal professional or official authority for legal decisions.**
+### User Disclaimer
+
+> **මෙම පද්ධතිය නීතිමය උපදෙස් ලබා දීම සඳහා නොවේ. මෙහි ලබා දෙන සරල පැහැදිලි කිරීම් මුල් නීතිමය ලේඛන තේරුම් ගැනීමට සහාය වීම සඳහා පමණි. නීතිමය තීරණ ගැනීමට පෙර අදාළ නිල මූලාශ්‍ර හෝ සුදුසු නීතිමය වෘත්තිකයෙකුගෙන් උපදෙස් ලබා ගන්න.**
 
 ---
 
-# 🌍 Future Development
+# 🌍 Future Enhancements
 
-Possible future extensions include:
+Possible future improvements include:
 
-* Full Sinhala/Tamil/English support
-* Government service directory
-* Voice-based AI assistant
-* WhatsApp integration
+* Tamil language support
+* English language support
+* Additional Sri Lankan legal domains
+* Voice-based legal questions
+* Speech-to-Text
+* Text-to-Speech
+* Advanced legal entity recognition
+* Legal document comparison
+* Legal clause highlighting
+* Citation-aware answers
+* Automatic source verification
 * Mobile application
-* SMS-based information service
-* Accessibility features
-* Human-agent escalation
-* Personalized service recommendations
-* More government sectors
-* Real-time government information updates
-* Integration with additional public-service systems
+* Human legal-expert escalation
+* Improved Sinhala legal tokenizer
+* Lightweight edge deployment
 
 ---
 
 # 📊 Expected Outcome
 
-The final system will demonstrate a complete AI pipeline:
+The completed system will provide an end-to-end pipeline:
 
 ```text
-Public Information
-       ↓
-Data Collection
-       ↓
-Sinhala Dataset
-       ↓
-Small Language Model
-       ↓
-RAG Knowledge Base
-       ↓
-Gemini API
-       ↓
-Response Validation
-       ↓
-Multilingual AI Assistant
-       ↓
-Web + IVR/DTMF
+                 Legal Documents
+                       │
+                       ▼
+                Data Processing
+                       │
+                       ▼
+              Sinhala Legal Dataset
+                       │
+                       ▼
+               Small Language Model
+                       │
+                       ▼
+                  User Query
+                       │
+                       ▼
+               Legal RAG Retrieval
+                       │
+                       ▼
+                  Gemini API
+                       │
+                       ▼
+             Response Generation
+                       │
+                       ▼
+             Meaning Validation
+                       │
+              ┌────────┴────────┐
+              ▼                 ▼
+         Web Response       Voice Response
 ```
 
-The project aims to demonstrate that a **small, domain-focused language model combined with retrieval, large-model assistance, and validation mechanisms can provide a practical and accessible public-information service for Sri Lankan users.**
+The project aims to demonstrate that a **Sinhala-focused Small Language Model combined with RAG, Gemini API, and meaning-preservation techniques can make complex Sri Lankan legal information easier to understand while maintaining important legal information.**
 
 ---
