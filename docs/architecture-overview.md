@@ -154,7 +154,7 @@
 
 ## Database
 
-* PostgreSQL
+* Oracle DB
 
 ## Frontend
 

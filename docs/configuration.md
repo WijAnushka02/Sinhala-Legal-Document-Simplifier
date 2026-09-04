@@ -27,18 +27,18 @@ BACKEND_PORT=8000
 ALLOWED_ORIGINS=http://localhost:5173   # Comma-separated for prod
 
 # ============================================================
-# DATABASE — PostgreSQL
+# DATABASE — Oracle DB
 # Option A: Docker Compose (default)
 # ============================================================
-POSTGRES_HOST=localhost
-POSTGRES_PORT=5432
-POSTGRES_DB=sinhala_legal_db
-POSTGRES_USER=legal_user
-POSTGRES_PASSWORD=change_me_secure_password
-DATABASE_URL=postgresql+asyncpg://legal_user:change_me_secure_password@localhost:5432/sinhala_legal_db
+ORACLE_HOST=localhost
+ORACLE_PORT=5432
+ORACLE_DB=sinhala_legal_db
+ORACLE_USER=legal_user
+ORACLE_PASSWORD=change_me_secure_password
+DATABASE_URL=oracle+asyncpg://legal_user:change_me_secure_password@localhost:5432/sinhala_legal_db
 
 # Option B: Cloud-managed (Supabase / Neon / Railway) — uncomment and fill:
-# DATABASE_URL=postgresql+asyncpg://user:password@db.supabase.co:5432/postgres?ssl=require
+# DATABASE_URL=oracle+asyncpg://user:password@db.supabase.co:5432/oracle?ssl=require
 
 # ============================================================
 # VECTOR DATABASE — ChromaDB
@@ -105,14 +105,14 @@ The default `DATABASE_URL` in `.env.example` works with `docker compose up`.
 ### Option B — Supabase
 1. Create a project at [supabase.com](https://supabase.com)
 2. Copy the **Connection string** (URI format) from Project Settings → Database
-3. Set `DATABASE_URL=postgresql+asyncpg://...?ssl=require`
+3. Set `DATABASE_URL=oracle+asyncpg://...?ssl=require`
 
 ### Option C — Neon
 1. Create a database at [neon.tech](https://neon.tech)
 2. Use the provided connection string with `sslmode=require`
 
 ### Option D — Railway
-1. Create a PostgreSQL service at [railway.app](https://railway.app)
+1. Create a Oracle DB service at [railway.app](https://railway.app)
 2. Copy the `DATABASE_PUBLIC_URL` from the service variables
 
 ---

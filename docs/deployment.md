@@ -7,10 +7,10 @@
 
 services:
 
-  postgres:                    # PostgreSQL 16
-    image: postgres:16-alpine
+  oracle:                    # Oracle DB 16
+    image: oracle:16-alpine
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - oracle_data:/var/lib/Oracle DB/data
     ports: ["5432:5432"]
 
   chromadb:                    # ChromaDB vector database
@@ -25,7 +25,7 @@ services:
 
   backend:                     # FastAPI application
     build: ./backend
-    depends_on: [postgres, chromadb, redis]
+    depends_on: [Oracle, chromadb, redis]
     env_file: .env
     ports: ["8000:8000"]
     volumes:
@@ -42,7 +42,7 @@ services:
 
 ```bash
 # Start only databases (backend runs locally)
-docker compose up -d postgres chromadb redis
+docker compose up -d Oracle chromadb redis
 
 # Start full stack (all services)
 docker compose up -d
