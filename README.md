@@ -772,7 +772,7 @@ cp .env.example .env
 ### 3 — Start Infrastructure (Docker)
 
 ```bash
-docker compose up -d postgres chromadb redis
+docker compose up -d oracle chromadb redis
 ```
 
 ### 4 — Backend
@@ -820,7 +820,7 @@ Detailed documentation is maintained in the [`docs/`](./docs/) folder to keep th
 | [📱 Product Features](./docs/product.md) | Web App, IVR, Security, and Future Enhancements |
 |---|---|
 | [📁 File Structure](./docs/file-structure.md) | Complete project directory map with descriptions |
-| [🗄️ Database Schema](./docs/database-schema.md) | PostgreSQL schema, ER diagram, and error codes |
+| [🗄️ Database Schema](./docs/database-schema.md) | Oracle DB schema, ER diagram, and error codes |
 | [🔌 API Endpoints](./docs/api-endpoints.md) | Full REST API reference with request/response examples |
 | [🔑 Configuration](./docs/configuration.md) | All environment variables and cloud database options |
 | [🐳 Deployment](./docs/deployment.md) | Docker Compose, CI/CD, and production deployment |
