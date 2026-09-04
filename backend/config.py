@@ -33,11 +33,11 @@ class Settings(BaseSettings):
 
     # ── Database ─────────────────────────────────────────────
     DATABASE_URL: str
-    POSTGRES_HOST: str = "localhost"
-    POSTGRES_PORT: int = 5432
-    POSTGRES_DB: str = "sinhala_legal_db"
-    POSTGRES_USER: str = "legal_user"
-    POSTGRES_PASSWORD: str
+    ORACLE_HOST: str = "localhost"
+    ORACLE_PORT: int = 1521
+    ORACLE_DB: str = "sinhala_legal_db"
+    ORACLE_USER: str = "legal_user"
+    ORACLE_PASSWORD: str
 
     # ── ChromaDB ─────────────────────────────────────────────
     CHROMA_HOST: str = "localhost"
