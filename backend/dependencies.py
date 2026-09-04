@@ -79,7 +79,7 @@ async def get_current_user_optional(
 
 
 # ──────────────────────────────────────────────────────────────────────────────
-# Rate limiting — Redis sliding window (NOT PostgreSQL)
+# Rate limiting — Redis sliding window (NOT Oracle DB)
 # ──────────────────────────────────────────────────────────────────────────────
 async def _check_rate_limit(
     identifier: str,
