@@ -1,6 +1,6 @@
 # 🗄️ Database Schema
 
-PostgreSQL is used as the primary relational database. ChromaDB is used as the vector database (separate service).
+Oracle DB is used as the primary relational database. ChromaDB is used as the vector database (separate service).
 
 > **Note**: The ORM models in `backend/models/` use a **normalized 3-table design** for simplification sessions, which supersedes the flat schema shown below. See `backend/models/session.py` for the production schema.
 

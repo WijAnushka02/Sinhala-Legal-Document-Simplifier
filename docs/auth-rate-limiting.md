@@ -25,7 +25,7 @@
 
 ## Rate Limiting Strategy
 
-Rate limiting uses **Redis sliding window** (not PostgreSQL) for correctness and performance under concurrent load.
+Rate limiting uses **Redis sliding window** (not Oracle DB) for correctness and performance under concurrent load.
 
 ```text
 Endpoint                   Limit
@@ -61,4 +61,4 @@ HTTP 429 Too Many Requests
 - [x] **`.env` in `.gitignore`** — never committed
 - [x] Dependency **security scanning** via `pip-audit` in CI
 - [x] **HTTPS** enforced in production (Nginx / cloud provider TLS)
-- [x] Rate limiting backed by **Redis** — no PostgreSQL bottleneck
+- [x] Rate limiting backed by **Redis** — no Oracle DB bottleneck

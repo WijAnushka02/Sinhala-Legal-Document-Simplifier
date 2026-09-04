@@ -163,7 +163,7 @@ Sinhala-Legal-Document-Simplifier/
 │
 ├── docs/                              # ← All detailed documentation lives here
 │   ├── file-structure.md              # This file — complete project directory map
-│   ├── database-schema.md             # PostgreSQL schema + ER diagram
+│   ├── database-schema.md             # Oracle DB schema + ER diagram
 │   ├── api-endpoints.md               # Full REST API reference
 │   ├── configuration.md               # All environment variables reference
 │   ├── deployment.md                  # Docker, CI/CD, and production deployment

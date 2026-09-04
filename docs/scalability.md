@@ -8,7 +8,7 @@ MVP (Single Server)
 
 Phase 2 (Horizontal Scaling)
   ├── Backend  → Multiple FastAPI replicas (Gunicorn workers or Cloud Run autoscaling)
-  ├── Postgres → Connection pooling via PgBouncer
+  ├── Oracle → Connection pooling via PgBouncer
   ├── ChromaDB → Dedicated server or Weaviate Cloud
   └── Redis    → Upstash or ElastiCache
 
@@ -61,8 +61,8 @@ result = await loop.run_in_executor(_slm_executor, slm_inference_fn, text)
 
 - All foreign keys are indexed
 - `simplification_sessions` indexed on `(user_id, created_at DESC)` for fast paginated history
-- `legal_chunks` vector search happens in ChromaDB — not PostgreSQL
-- `asyncpg` driver for non-blocking PostgreSQL I/O
+- `legal_chunks` vector search happens in ChromaDB — not Oracle DB
+- `asyncpg` driver for non-blocking Oracle DB I/O
 - Connection pool: `pool_size=10, max_overflow=20`
 - `pool_pre_ping=True` to detect stale connections
 
